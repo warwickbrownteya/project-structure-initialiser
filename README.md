@@ -61,8 +61,8 @@ project-structure-initialiser.sh my-project
 # Create a Node.js project
 project-structure-initialiser.sh -t nodejs my-node-app
 
-# Create a Python project with Apache 2.0 licence
-project-structure-initialiser.sh -t python -l "Apache-2.0" my-python-app
+# Create a Python project with MIT licence (overriding the proprietary default)
+project-structure-initialiser.sh -t python -l "MIT" my-python-app
 
 # Create a documentation project without initialising Git
 project-structure-initialiser.sh -t documentation --no-git my-docs
@@ -74,7 +74,7 @@ project-structure-initialiser.sh -t documentation --no-git my-docs
 Options:
   -t, --type TYPE          Project type: generic, nodejs, python, documentation, research, data-analysis
   -o, --output DIR         Output directory (default: current directory)
-  -l, --license TYPE       Licence type: MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense
+  -l, --license TYPE       Licence type: Proprietary, MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense [default: Proprietary]
   -c, --ci-provider TYPE   CI/CD provider: github-actions, gitlab-ci, jenkins, none
   --no-git                 Skip Git repository initialisation
   --no-ci                  Skip CI/CD configuration generation

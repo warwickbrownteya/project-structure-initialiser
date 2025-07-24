@@ -24,7 +24,7 @@ CREATE_DOCS=1
 CREATE_TEMPLATES=1
 VERBOSE=0
 DRY_RUN=0
-LICENSE_TYPE="MIT"
+LICENSE_TYPE="Proprietary"
 AUTHOR_NAME=""
 AUTHOR_EMAIL=""
 
@@ -32,7 +32,7 @@ AUTHOR_EMAIL=""
 PROJECT_TYPES=("generic" "nodejs" "python" "documentation" "research" "data-analysis")
 
 # License types
-LICENSE_TYPES=("MIT" "Apache-2.0" "GPL-3.0" "BSD-3-Clause" "ISC" "Unlicense")
+LICENSE_TYPES=("Proprietary" "MIT" "Apache-2.0" "GPL-3.0" "BSD-3-Clause" "ISC" "Unlicense")
 
 # CI/CD providers
 CI_PROVIDERS=("github-actions" "gitlab-ci" "jenkins" "none")
@@ -78,7 +78,7 @@ USAGE:
 OPTIONS:
     -t, --type TYPE          Project type: ${PROJECT_TYPES[*]} [default: generic]
     -o, --output DIR         Output directory [default: current]
-    -l, --license TYPE       License type: ${LICENSE_TYPES[*]} [default: MIT]
+    -l, --license TYPE       License type: ${LICENSE_TYPES[*]} [default: Proprietary]
     -a, --author NAME        Author name
     -e, --email EMAIL        Author email
     --ci PROVIDER           CI/CD provider: ${CI_PROVIDERS[*]} [default: github-actions]
@@ -1331,6 +1331,56 @@ create_license_file() {
     local current_year=$(date +%Y)
     
     case "$license_type" in
+        Proprietary)
+            cat > "$project_dir/LICENSE" << EOF
+PROPRIETARY SOFTWARE LICENSE
+
+© $current_year ${AUTHOR_NAME}. All Rights Reserved.
+
+This software, including all source code, documentation, and related materials
+("Software"), is the proprietary and confidential property of ${AUTHOR_NAME}.
+
+TERMS AND CONDITIONS:
+
+1. INTERNAL USE ONLY
+   This Software is provided for internal use only. It may not be distributed,
+   sublicensed, rented, leased, or otherwise transferred to any third party without
+   prior written permission from ${AUTHOR_NAME}.
+
+2. NO DISTRIBUTION
+   You may not distribute the Software in any form, including but not limited to
+   source code, compiled binaries, or as part of another software package.
+
+3. OWNERSHIP
+   All title, ownership rights, and intellectual property rights in and to the
+   Software remain with ${AUTHOR_NAME}. This license does not grant you any rights
+   to trademarks or service marks of ${AUTHOR_NAME}.
+
+4. RESTRICTIONS
+   You may not:
+   a. Modify, adapt, alter, translate, or create derivative works based upon the Software
+   b. Reverse engineer, decompile, disassemble, or otherwise attempt to discover the
+      source code of the Software except to the extent applicable laws specifically
+      prohibit such restriction
+   c. Remove any proprietary notices or labels on the Software
+
+5. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL
+   ${AUTHOR_NAME} BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER
+   IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN
+   CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+6. TERMINATION
+   This license is effective until terminated. It will terminate automatically
+   without notice if you fail to comply with any of its provisions.
+
+CONTACT:
+For inquiries regarding usage or licensing of this Software, please contact
+${AUTHOR_EMAIL}.
+EOF
+            ;;
         MIT)
             cat > "$project_dir/LICENSE" << EOF
 MIT License

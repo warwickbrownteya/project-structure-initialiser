@@ -12,7 +12,7 @@ This directory contains usage examples for the Project Structure Initialiser too
 
 This creates a basic project structure with:
 - README.md
-- LICENCE file (MIT by default)
+- LICENCE file (Proprietary by default)
 - .gitignore
 - src/ directory
 - docs/ directory
@@ -40,7 +40,7 @@ Creates a Node.js application with:
 Creates a Python application with:
 - pyproject.toml setup
 - Virtual environment configuration
-- Apache 2.0 licence instead of the default MIT
+- Apache 2.0 licence instead of the default Proprietary
 - pytest framework
 - src/ and tests/ directories
 
@@ -95,7 +95,7 @@ Shows what would be created without making any changes to the filesystem.
 Options:
   -t, --type TYPE          Project type: generic, nodejs, python, documentation, research, data-analysis
   -o, --output DIR         Output directory (default: current directory)
-  -l, --license TYPE       Licence type: MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense
+  -l, --license TYPE       Licence type: Proprietary, MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense [default: Proprietary]
   -c, --ci-provider TYPE   CI/CD provider: github-actions, gitlab-ci, jenkins, none
   --no-git                 Skip Git repository initialisation
   --no-ci                  Skip CI/CD configuration generation
