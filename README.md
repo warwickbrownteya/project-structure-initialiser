@@ -3,24 +3,24 @@
 ![ShellCheck](https://github.com/warwickbrownteya/project-structure-initialiser/actions/workflows/shellcheck.yml/badge.svg)
 ![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)
 
-A powerful command-line tool for automatically generating comprehensive project structures with best practices, CI/CD configurations, and documentation templates.
+A command-line tool that generates standardised project structures with appropriate templates, CI/CD configurations, and documentation.
 
-## 🚀 Features
+## Features
 
-- **Multi-language Support**: Templates for NodeJS, Python, and more
-- **CI/CD Integration**: Automated pipeline configurations (GitHub Actions, GitLab CI, Jenkins)
+- **Multi-language Templates**: For Node.js, Python, and other languages
+- **CI/CD Integration**: Configuration for GitHub Actions, GitLab CI, and Jenkins
 - **Documentation Templates**: README files, contributing guidelines, and more
-- **Best Practices**: Industry-standard project layouts for each project type
-- **Configurable Templates**: Easily customisable project structures
-- **Licence Management**: Support for popular open-source licences
-- **Git Integration**: Automatic repository initialisation with initial commit
+- **Best Practices**: Standard project layouts for each project type
+- **Configurable Templates**: Adaptable project structures
+- **Licence Management**: Templates for various licence types
+- **Git Integration**: Automatic repository initialisation
 
-## 📋 Requirements
+## Requirements
 
 - Bash 4.0 or later
 - Git (optional, for repository initialisation)
 
-## 🔧 Installation
+## Installation
 
 ### Option 1: Using the installer script
 
@@ -46,7 +46,7 @@ chmod +x project-structure-initialiser.sh
 sudo ln -s "$(pwd)/project-structure-initialiser.sh" /usr/local/bin/project-structure-initialiser
 ```
 
-## 🎮 Usage
+## Usage
 
 ```bash
 project-structure-initialiser.sh [options] project_name
@@ -58,7 +58,7 @@ project-structure-initialiser.sh [options] project_name
 # Create a generic project
 project-structure-initialiser.sh my-project
 
-# Create a NodeJS project
+# Create a Node.js project
 project-structure-initialiser.sh -t nodejs my-node-app
 
 # Create a Python project with Apache 2.0 licence
@@ -74,7 +74,7 @@ project-structure-initialiser.sh -t documentation --no-git my-docs
 Options:
   -t, --type TYPE          Project type: generic, nodejs, python, documentation, research, data-analysis
   -o, --output DIR         Output directory (default: current directory)
-  -l, --license TYPE       License type: MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense
+  -l, --license TYPE       Licence type: MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense
   -c, --ci-provider TYPE   CI/CD provider: github-actions, gitlab-ci, jenkins, none
   --no-git                 Skip Git repository initialisation
   --no-ci                  Skip CI/CD configuration generation
@@ -84,15 +84,15 @@ Options:
   -h, --help               Show this help message
 ```
 
-## 📁 Project Types
+## Project Types
 
 The tool supports several project types, each with its own specialised structure:
 
 ### Generic Project
 Basic project layout with minimal structure, suitable as a starting point for any project.
 
-### NodeJS Project
-Complete structure for Node.js applications, including:
+### Node.js Project
+Structure for Node.js applications, including:
 - package.json with common scripts
 - ESLint and Prettier configurations
 - Jest testing setup
@@ -100,7 +100,7 @@ Complete structure for Node.js applications, including:
 - CI/CD pipeline for Node.js
 
 ### Python Project
-Comprehensive structure for Python applications, including:
+Structure for Python applications, including:
 - pyproject.toml setup
 - Virtual environment configuration
 - pytest framework
@@ -128,23 +128,23 @@ Structure for data analysis projects, including:
 - Visualisation templates
 - Analysis workflow
 
-## ⚙️ Configuration
+## Configuration
 
-The tool stores its configuration in the following locations:
+The tool stores its configuration in these locations:
 
 - **Config directory**: `~/.config/project-structure-initialiser`
 - **Cache directory**: `~/.cache/project-structure-initialiser`
 - **Log file**: `~/.cache/project-structure-initialiser/initialiser.log`
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-## 📃 Licence
+## Licence
 
 This project is proprietary software with no distribution rights. For internal use only - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
-- Inspired by various project scaffolding tools and years of project setup experience
-- Thanks to all contributors who have helped improve this tool
+- Inspired by various project scaffolding tools and project setup experience
+- Thanks to all contributors

@@ -11,12 +11,12 @@ INSTALL_DIR="${HOME}/.local/bin"
 CONFIG_DIR="${HOME}/.config/project-structure-initialiser"
 CACHE_DIR="${HOME}/.cache/project-structure-initialiser"
 
-# Colors for output
+# Colours for output
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+NC='\033[0m' # No Colour
 
 # Logging functions
 info() { echo -e "${BLUE}INFO:${NC} $*"; }

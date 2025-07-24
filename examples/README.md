@@ -12,13 +12,13 @@ This directory contains usage examples for the Project Structure Initialiser too
 
 This creates a basic project structure with:
 - README.md
-- LICENSE file (MIT by default)
+- LICENCE file (MIT by default)
 - .gitignore
 - src/ directory
 - docs/ directory
 - tests/ directory
 
-### NodeJS Project
+### Node.js Project
 
 ```bash
 ./project_structure_initialiser.sh -t nodejs my-node-app
@@ -31,7 +31,7 @@ Creates a Node.js application with:
 - src/ and test/ directories
 - GitHub Actions CI configuration
 
-### Python Project with Custom License
+### Python Project with Custom Licence
 
 ```bash
 ./project_structure_initialiser.sh -t python -l "Apache-2.0" my-python-app
@@ -40,7 +40,7 @@ Creates a Node.js application with:
 Creates a Python application with:
 - pyproject.toml setup
 - Virtual environment configuration
-- Apache 2.0 license instead of the default MIT
+- Apache 2.0 licence instead of the default MIT
 - pytest framework
 - src/ and tests/ directories
 
@@ -64,7 +64,7 @@ Creates a research project with:
 ./project_structure_initialiser.sh -t documentation --no-git my-documentation
 ```
 
-Creates a documentation project without initializing a Git repository:
+Creates a documentation project without initialising a Git repository:
 - docs/ directory with markdown templates
 - Table of contents
 - No .git/ directory or initial commit
@@ -79,7 +79,7 @@ Creates a data analysis project in a specific directory:
 - /path/to/projects/data-analysis-project/
 - data/input/ and data/output/ directories
 - notebooks/ directory
-- visualization/ directory
+- visualisation/ directory
 
 ### Dry Run Mode
 
@@ -87,7 +87,7 @@ Creates a data analysis project in a specific directory:
 ./project_structure_initialiser.sh -n -t python my-python-app
 ```
 
-Shows what would be created without actually making any changes to the filesystem.
+Shows what would be created without making any changes to the filesystem.
 
 ## Command Line Options Reference
 
@@ -95,7 +95,7 @@ Shows what would be created without actually making any changes to the filesyste
 Options:
   -t, --type TYPE          Project type: generic, nodejs, python, documentation, research, data-analysis
   -o, --output DIR         Output directory (default: current directory)
-  -l, --license TYPE       License type: MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense
+  -l, --license TYPE       Licence type: MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense
   -c, --ci-provider TYPE   CI/CD provider: github-actions, gitlab-ci, jenkins, none
   --no-git                 Skip Git repository initialisation
   --no-ci                  Skip CI/CD configuration generation

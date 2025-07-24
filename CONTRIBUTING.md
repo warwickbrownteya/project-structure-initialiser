@@ -1,10 +1,10 @@
 # Contributing to Project Structure Initialiser
 
-Thank you for considering contributing to Project Structure Initialiser! This document provides guidelines and instructions for contributing to this project.
+Thank you for considering contributing to Project Structure Initialiser. This document provides guidelines for contributing to this project.
 
 ## Code of Conduct
 
-By participating in this project, you agree to abide by our code of conduct: be respectful, considerate, and collaborative.
+By participating in this project, you agree to be respectful, considerate, and collaborative.
 
 ## How Can I Contribute?
 
@@ -75,7 +75,7 @@ To add support for a new project type:
 - Use defensive programming (e.g., `set -euo pipefail`)
 - Quote variables to prevent globbing and word splitting
 - Use local variables in functions when possible
-- Add helpful error messages
+- Add clear error messages
 
 ### Commit Messages
 
@@ -106,8 +106,8 @@ Test your changes thoroughly:
 - Document new options in the help output
 - Keep examples up-to-date
 
-## License
+## Licence
 
-By contributing, you agree that your contributions will be licensed under the project's MIT License.
+By contributing, you agree that your contributions will be licensed under the project's proprietary licence.
 
-Thank you for contributing to Project Structure Initialiser!
+Thank you for contributing to Project Structure Initialiser.
