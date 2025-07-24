@@ -1,6 +1,29 @@
 # Project Structure for Project-Structure-Initialiser
 
-Based on the analysis of the codebase, here's a recommended project structure for the project-structure-initialiser tool itself.
+## Current Project Structure
+
+Here's the actual current structure of the project-structure-initialiser repository:
+
+```
+project-structure-initialiser/
+├── .github/                              # GitHub configuration
+│   └── workflows/                        # GitHub Actions workflows
+│       └── shellcheck.yml                # Shell script linting
+├── .gitignore                            # Git ignore file
+├── CONTRIBUTING.md                       # Contributing guidelines
+├── LICENSE                               # License file (Proprietary)
+├── README.md                             # Main README
+├── README-FOR-AI.n3                      # Semantic metadata for AI tools in N3 format
+├── examples/                             # Example projects
+│   └── README.md                         # Examples documentation
+├── install.sh                            # Installation script
+├── project_structure_initialiser.sh      # Main script with all functionality
+└── project-structure.md                  # This file - proposed project structure
+```
+
+## Proposed Project Structure
+
+Based on the analysis of the codebase, here's a recommended project structure for improving the project-structure-initialiser tool:
 
 ```
 project-structure-initialiser/
