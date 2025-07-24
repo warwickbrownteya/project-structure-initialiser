@@ -1,0 +1,156 @@
+@prefix tool: <https://github.com/warwickbrownteya/project-structure-initialiser#> .
+@prefix func: <https://github.com/warwickbrownteya/project-structure-initialiser/functions#> .
+@prefix doc: <https://github.com/warwickbrownteya/project-structure-initialiser/documentation#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+tool:ProjectStructureInitialiser a tool:CommandLineTool ;
+    tool:version "0.0.1" ;
+    tool:mainScript "project_structure_initialiser.sh" ;
+    tool:license "Proprietary" ;
+    tool:purpose "Generate standardised project structures with templates, CI/CD configurations, and documentation" ;
+    tool:requirements (
+        "Bash 4.0+"
+        "Git (optional)"
+    ) ;
+    tool:configLocation "~/.config/project-structure-initialiser" ;
+    tool:cacheLocation "~/.cache/project-structure-initialiser" ;
+    tool:logFile "~/.cache/project-structure-initialiser/initialiser.log" .
+
+tool:supportedProjectTypes a tool:TypeCollection ;
+    tool:types (
+        "generic"
+        "nodejs"
+        "python" 
+        "documentation"
+        "research"
+        "data-analysis"
+    ) ;
+    tool:default "generic" .
+
+tool:supportedLicenseTypes a tool:TypeCollection ;
+    tool:types (
+        "Proprietary"
+        "MIT"
+        "Apache-2.0"
+        "GPL-3.0"
+        "BSD-3-Clause"
+        "ISC"
+        "Unlicense"
+    ) ;
+    tool:default "Proprietary" .
+
+tool:supportedCIProviders a tool:TypeCollection ;
+    tool:types (
+        "github-actions"
+        "gitlab-ci"
+        "jenkins"
+        "none"
+    ) ;
+    tool:default "github-actions" .
+
+func:install a tool:InstallFunction ;
+    rdfs:comment "Install script that copies the main script to ~/.local/bin" ;
+    tool:scriptPath "install.sh" .
+
+func:createProject a tool:CoreFunction ;
+    rdfs:comment "Primary functionality to generate project structure" ;
+    tool:requiredParameter "project_name" ;
+    tool:optionalParameters [
+        tool:param "-t" , "--type" ;
+        tool:description "Project type" ;
+        tool:values tool:supportedProjectTypes ;
+    ] , [
+        tool:param "-o" , "--output" ;
+        tool:description "Output directory (default: current directory)" ;
+    ] , [
+        tool:param "-l" , "--license" ;
+        tool:description "Licence type" ;
+        tool:values tool:supportedLicenseTypes ;
+    ] , [
+        tool:param "-c" , "--ci-provider" ;
+        tool:description "CI/CD provider" ;
+        tool:values tool:supportedCIProviders ;
+    ] , [
+        tool:param "--no-git" ;
+        tool:description "Skip Git repository initialisation" ;
+        tool:type xsd:boolean ;
+    ] , [
+        tool:param "--no-ci" ;
+        tool:description "Skip CI/CD configuration generation" ;
+        tool:type xsd:boolean ;
+    ] , [
+        tool:param "--no-docs" ;
+        tool:description "Skip documentation generation" ;
+        tool:type xsd:boolean ;
+    ] , [
+        tool:param "-n" , "--dry-run" ;
+        tool:description "Show what would be created without making changes" ;
+        tool:type xsd:boolean ;
+    ] , [
+        tool:param "-v" , "--verbose" ;
+        tool:description "Enable verbose output" ;
+        tool:type xsd:boolean ;
+    ] , [
+        tool:param "-h" , "--help" ;
+        tool:description "Show help message" ;
+        tool:type xsd:boolean ;
+    ] .
+
+doc:usageExamples a tool:ExampleCollection ;
+    tool:basic [
+        tool:description "Create a generic project" ;
+        tool:command "./project_structure_initialiser.sh my-project" ;
+    ] , [
+        tool:description "Create a Node.js project" ;
+        tool:command "./project_structure_initialiser.sh -t nodejs my-node-app" ;
+    ] , [
+        tool:description "Create a Python project with MIT licence (overriding the proprietary default)" ;
+        tool:command "./project_structure_initialiser.sh -t python -l \"MIT\" my-python-app" ;
+    ] , [
+        tool:description "Create a documentation project without initialising Git" ;
+        tool:command "./project_structure_initialiser.sh -t documentation --no-git my-docs" ;
+    ] ;
+    tool:advanced [
+        tool:description "Research project with GitLab CI" ;
+        tool:command "./project_structure_initialiser.sh -t research -c gitlab-ci research-project" ;
+    ] , [
+        tool:description "Data analysis project with custom output directory" ;
+        tool:command "./project_structure_initialiser.sh -t data-analysis -o /path/to/projects/ data-analysis-project" ;
+    ] , [
+        tool:description "Dry run mode" ;
+        tool:command "./project_structure_initialiser.sh -n -t python my-python-app" ;
+    ] .
+
+doc:projectStructures a tool:StructureCollection ;
+    tool:generic [
+        tool:component "README.md" ;
+        tool:component "LICENSE" ;
+        tool:component ".gitignore" ;
+        tool:component "src/" ;
+        tool:component "docs/" ;
+        tool:component "tests/" ;
+    ] ;
+    tool:nodejs [
+        tool:component "package.json" ;
+        tool:component "eslint+prettier" ;
+        tool:component "jest" ;
+        tool:component "src/ and test/" ;
+        tool:component "GitHub Actions CI" ;
+    ] ;
+    tool:python [
+        tool:component "pyproject.toml" ;
+        tool:component "virtual environment" ;
+        tool:component "pytest" ;
+        tool:component "src/ and tests/" ;
+    ] ;
+    tool:research [
+        tool:component "data/" ;
+        tool:component "notebooks/" ;
+        tool:component "literature/" ;
+    ] ;
+    tool:dataAnalysis [
+        tool:component "data/input/ and data/output/" ;
+        tool:component "notebooks/" ;
+        tool:component "visualisation/" ;
+    ] .

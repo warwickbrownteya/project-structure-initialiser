@@ -44,18 +44,36 @@ RED='\033[0;31m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# Utility functions
+array_contains() {
+    local item="$1"
+    shift
+    local array=("$@")
+    for element in "${array[@]}"; do
+        if [[ "$element" == "$item" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
 # Logging functions
 log() {
     local level="$1"
     shift
-    local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+    local timestamp
+    timestamp=$(date "+%Y-%m-%d %H:%M:%S")
     echo "[$level] $timestamp: $*" | tee -a "$LOG_FILE" >&2
 }
 
 info() { log "INFO" "$@"; }
 warn() { log "WARN" "$@"; }
 error() { log "ERROR" "$@"; exit 1; }
-debug() { [[ $VERBOSE -eq 1 ]] && log "DEBUG" "$@" || true; }
+debug() { 
+    if [[ $VERBOSE -eq 1 ]]; then
+        log "DEBUG" "$@"
+    fi
+}
 
 # Colored output functions
 print_success() { echo -e "${GREEN}$*${NC}"; }
@@ -124,7 +142,7 @@ setup_dirs() {
 validate_project_type() {
     local type="$1"
     
-    if [[ ! " ${PROJECT_TYPES[*]} " =~ " ${type} " ]]; then
+    if ! array_contains "$type" "${PROJECT_TYPES[@]}"; then
         error "Invalid project type: $type. Valid types: ${PROJECT_TYPES[*]}"
     fi
 }
@@ -133,7 +151,7 @@ validate_project_type() {
 validate_license_type() {
     local license="$1"
     
-    if [[ ! " ${LICENSE_TYPES[*]} " =~ " ${license} " ]]; then
+    if ! array_contains "$license" "${LICENSE_TYPES[@]}"; then
         error "Invalid license type: $license. Valid licenses: ${LICENSE_TYPES[*]}"
     fi
 }
@@ -1328,7 +1346,8 @@ EOF
 create_license_file() {
     local project_dir="$1"
     local license_type="$2"
-    local current_year=$(date +%Y)
+    local current_year
+    current_year=$(date +%Y)
     
     case "$license_type" in
         Proprietary)
@@ -1861,7 +1880,7 @@ initialise_project() {
     create_base_structure "$project_dir" "$project_type"
     create_project_files "$project_dir" "$project_type"
     create_common_files "$project_dir"
-    create_ci_configuration "$project_dir" "$project_type" "github-actions"
+    create_ci_configuration "$project_dir" "$project_type" "$CI_PROVIDER"
     
     # Initialize Git repository
     init_git_repository "$project_dir"
@@ -1918,6 +1937,7 @@ parse_args() {
                 ;;
             --ci)
                 CI_PROVIDER="$2"
+                export CI_PROVIDER
                 shift 2
                 ;;
             --no-git)
@@ -1930,10 +1950,12 @@ parse_args() {
                 ;;
             --no-docs)
                 CREATE_DOCS=0
+                export CREATE_DOCS
                 shift
                 ;;
             --no-templates)
                 CREATE_TEMPLATES=0
+                export CREATE_TEMPLATES
                 shift
                 ;;
             -v|--verbose)
