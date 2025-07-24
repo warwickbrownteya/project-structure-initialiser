@@ -1,50 +1,150 @@
 # Project Structure Initialiser
 
-## Description
-Initialise comprehensive project structures with templates, CI/CD configurations, and documentation for various project types.
+![ShellCheck](https://github.com/warwickbrownteya/project-structure-initialiser/actions/workflows/shellcheck.yml/badge.svg)
+![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)
 
-## Version
-0.0.1
+A powerful command-line tool for automatically generating comprehensive project structures with best practices, CI/CD configurations, and documentation templates.
 
-## Purpose
-Automated project scaffolding with best practices, CI/CD pipeline setup, and comprehensive documentation templates.
+## 🚀 Features
 
-## Features
-- **Multi-language support**: Templates for various programming languages
-- **CI/CD integration**: Automated pipeline configurations
-- **Documentation templates**: README, contributing guidelines, etc.
-- **Best practices**: Industry-standard project layouts
-- **Configurable templates**: Customisable project structures
-- **Licence management**: Popular open-source licences
+- **Multi-language Support**: Templates for NodeJS, Python, and more
+- **CI/CD Integration**: Automated pipeline configurations (GitHub Actions, GitLab CI, Jenkins)
+- **Documentation Templates**: README files, contributing guidelines, and more
+- **Best Practices**: Industry-standard project layouts for each project type
+- **Configurable Templates**: Easily customisable project structures
+- **Licence Management**: Support for popular open-source licences
+- **Git Integration**: Automatic repository initialisation with initial commit
 
-## Usage
+## 📋 Requirements
+
+- Bash 4.0 or later
+- Git (optional, for repository initialisation)
+
+## 🔧 Installation
+
+### Option 1: Using the installer script
+
 ```bash
-./project_structure_initialiser.sh [options] project_name
+# Clone the repository
+git clone https://github.com/warwickbrownteya/project-structure-initialiser.git
+cd project-structure-initialiser
+
+# Run the installer
+./install.sh
 ```
 
-## Project Types
-- Generic projects
-- Language-specific templates
-- Framework-specific structures
-- Microservice architectures
+### Option 2: Manual installation
 
-## Configuration
-- Config directory: `~/.config/project-structure-initialiser`
-- Cache directory: `~/.cache/project-structure-initialiser`
-- Log file: `~/.cache/project-structure-initialiser/initialiser.log`
+```bash
+# Clone the repository
+git clone https://github.com/warwickbrownteya/project-structure-initialiser.git
 
-## Generated Structure
-- Source directories
-- Test frameworks
-- CI/CD configurations
-- Documentation templates
-- Licence files
-- Dependency management
+# Make the script executable
+chmod +x project-structure-initialiser.sh
 
-## Dependencies
-- Git
-- Template processing tools
-- Standard Unix utilities
+# Optional: Create a symbolic link to make it available system-wide
+sudo ln -s "$(pwd)/project-structure-initialiser.sh" /usr/local/bin/project-structure-initialiser
+```
 
-## File Location
-`project_structure_initialiser.sh`
+## 🎮 Usage
+
+```bash
+project-structure-initialiser.sh [options] project_name
+```
+
+### Basic Examples
+
+```bash
+# Create a generic project
+project-structure-initialiser.sh my-project
+
+# Create a NodeJS project
+project-structure-initialiser.sh -t nodejs my-node-app
+
+# Create a Python project with Apache 2.0 licence
+project-structure-initialiser.sh -t python -l "Apache-2.0" my-python-app
+
+# Create a documentation project without initialising Git
+project-structure-initialiser.sh -t documentation --no-git my-docs
+```
+
+### Available Options
+
+```
+Options:
+  -t, --type TYPE          Project type: generic, nodejs, python, documentation, research, data-analysis
+  -o, --output DIR         Output directory (default: current directory)
+  -l, --license TYPE       License type: MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense
+  -c, --ci-provider TYPE   CI/CD provider: github-actions, gitlab-ci, jenkins, none
+  --no-git                 Skip Git repository initialisation
+  --no-ci                  Skip CI/CD configuration generation
+  --no-docs                Skip documentation generation
+  -n, --dry-run            Show what would be created without making changes
+  -v, --verbose            Enable verbose output
+  -h, --help               Show this help message
+```
+
+## 📁 Project Types
+
+The tool supports several project types, each with its own specialised structure:
+
+### Generic Project
+Basic project layout with minimal structure, suitable as a starting point for any project.
+
+### NodeJS Project
+Complete structure for Node.js applications, including:
+- package.json with common scripts
+- ESLint and Prettier configurations
+- Jest testing setup
+- src and test directories
+- CI/CD pipeline for Node.js
+
+### Python Project
+Comprehensive structure for Python applications, including:
+- pyproject.toml setup
+- Virtual environment configuration
+- pytest framework
+- src and tests directories
+- CI/CD pipeline for Python
+
+### Documentation Project
+Structure focused on documentation, including:
+- Markdown templates
+- Documentation generation configuration
+- Table of contents
+- Contributing guidelines
+
+### Research Project
+Structure for research-oriented projects, including:
+- Data directories
+- Notebook setup
+- Literature references
+- Experiment tracking
+
+### Data Analysis Project
+Structure for data analysis projects, including:
+- Data input/output directories
+- Notebook configuration
+- Visualisation templates
+- Analysis workflow
+
+## ⚙️ Configuration
+
+The tool stores its configuration in the following locations:
+
+- **Config directory**: `~/.config/project-structure-initialiser`
+- **Cache directory**: `~/.cache/project-structure-initialiser`
+- **Log file**: `~/.cache/project-structure-initialiser/initialiser.log`
+
+## 🤝 Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## 📃 Licence
+
+This project is proprietary software with no distribution rights. For internal use only - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+- Inspired by various project scaffolding tools and years of project setup experience
+- Thanks to all contributors who have helped improve this tool

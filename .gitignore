@@ -9,8 +9,8 @@ config/
 # Ignore logs
 *.log
 
-# Ignore examples
-examples/
+# Examples are now tracked
+# examples/
 
 # Ignore original files (American English)
 project_structure_initializer.sh
