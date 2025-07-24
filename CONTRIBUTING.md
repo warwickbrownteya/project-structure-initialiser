@@ -57,7 +57,7 @@ To add support for a new project type:
 
 2. Make the script executable:
    ```
-   chmod +x project_structure_initialiser.sh
+   chmod +x project-structure-initialiser.sh
    ```
 
 3. Run ShellCheck to verify your changes:

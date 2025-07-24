@@ -72,16 +72,19 @@ project-structure-initialiser.sh -t documentation --no-git my-docs
 
 ```
 Options:
-  -t, --type TYPE          Project type: generic, nodejs, python, documentation, research, data-analysis
-  -o, --output DIR         Output directory (default: current directory)
+  -t, --type TYPE          Project type: generic, nodejs, python, documentation, research, data-analysis [default: generic]
+  -o, --output DIR         Output directory [default: current]
   -l, --license TYPE       Licence type: Proprietary, MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, ISC, Unlicense [default: Proprietary]
-  -c, --ci-provider TYPE   CI/CD provider: github-actions, gitlab-ci, jenkins, none
+  -a, --author NAME        Author name
+  -e, --email EMAIL        Author email
+  --no-templates          Skip template creation
+  --ci PROVIDER           CI/CD provider: github-actions, gitlab-ci, jenkins, none [default: github-actions]
   --no-git                 Skip Git repository initialisation
-  --no-ci                  Skip CI/CD configuration generation
-  --no-docs                Skip documentation generation
-  -n, --dry-run            Show what would be created without making changes
-  -v, --verbose            Enable verbose output
-  -h, --help               Show this help message
+  --no-ci                 Skip CI/CD configuration
+  --no-docs               Skip documentation structure
+  -n, --dry-run           Show what would be created without executing
+  -v, --verbose           Enable verbose output
+  -h, --help              Show this help message
 ```
 
 ## Project Types
