@@ -1,0 +1,16 @@
+# Ignore cache files
+cache/
+.cache/
+
+# Ignore config files
+config/
+.config/
+
+# Ignore logs
+*.log
+
+# Ignore examples
+examples/
+
+# Ignore original files (American English)
+project_structure_initializer.sh
